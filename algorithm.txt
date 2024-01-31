@@ -1,3 +1,15 @@
-print out description of the program
-ask for the player's name
-...
+Initialise variables
+Create a list to store 10 lottery tickets each containing 6 numbers called “LotteryTickets”
+Create random objects random for generating random numbers
+Set up scanner object scanner to take input
+Prompt for players' name
+Display a prompt asking for the player's name using “system.out.print”
+Use the scanner to read the player's input
+Generate lottery tickets 
+Use nested loops to iterate over each ticket and each number with in the ticket
+Make each number to have 2 digits and print them
+Print good luck message
+Display a good luck message using “system.out.println” with the players name
+5calculate and print the estimated jackpot
+Set a prize amount as the prize and use decimal format to format it with dollar signs and commas
+Print the prize amount using “system.out.println”
