@@ -1,15 +1,18 @@
-Initialise variables
-Create a list to store 10 lottery tickets each containing 6 numbers called “LotteryTickets”
-Create random objects random for generating random numbers
-Set up scanner object scanner to take input
-Prompt for players' name
-Display a prompt asking for the player's name using “system.out.print”
-Use the scanner to read the player's input
-Generate lottery tickets 
-Use nested loops to iterate over each ticket and each number with in the ticket
-Make each number to have 2 digits and print them
-Print good luck message
-Display a good luck message using “system.out.println” with the players name
-5calculate and print the estimated jackpot
-Set a prize amount as the prize and use decimal format to format it with dollar signs and commas
-Print the prize amount using “system.out.println”
+1) Create a "random" object called "rand" for generating random numbers
+2) Create a "Scanner" object called "scan" for taking user input
+3) Create a "DecimalFormat" object called "df" for formatting decimal values
+4) Print the message "This program generates 10 lottery tickets."
+5) Distplay the prompt "What is your name?" using "System.out.print"
+6) Read the player's name using "scan.nextLine()"
+7) Print a message confirming the player's name and the amount they want to play
+8) Print the message "Here are the tickets:"
+9) Initialize an array "winningNumbers" with winning lottery numbers
+10)Use a loop to generate and display 10 lottery tickets
+  a) For each ticket, generate 6 random numbers and display them
+    i) If a number is less than 10, format it with a leading 0
+  b) For each lottery number, check if it matches any of the winning numbers
+    i) if there is a match, raise the amount to the power of 1.75
+11)Print a line of dashes as a separator
+12)Print the message "Good luck[player's name]!" and a line of dashes
+13)Calculate the prize money using the raised amount and format it
+14)Print the message "Your Winnings are:" followed by the formatted prize money
