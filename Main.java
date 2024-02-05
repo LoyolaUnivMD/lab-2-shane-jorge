@@ -3,97 +3,85 @@
 // Due Date: 2/04/2024
 // Lab: 2
 // Problem Statement: Your task is to write a Java program for the Quick Play function from the lottery vending machine.
-// Data In: The players name
-// Data Out: Lottery ticket with the numbers and estimated jackpot
+// Data In: The players name and Amount to play
+// Data Out: Good luck message, prize amount, lottery numbers/tickets and closing message
 // Credits: none
+
 
 import java.util.Scanner;
 import java.util.Random; 
+import java.text.DecimalFormat;
 
 public class Main
 {
 	public static void main(String[] args) {
-	    // Intalize variables 
+	    // Intalize onjects 
 		Random rand = new Random();
 		Scanner scan = new Scanner(System.in);
-		
+		DecimalFormat df = new DecimalFormat("#,##0.00");
+	
+	// Welcome message	
 	System.out.print("This program generates 10 lottery tickets. \n");
+	
 	// Prompt for player's name
 	System.out.print("What is your name? ");
 	String name = scan.next();	
-	int count = 0;
-		System.out.print("Here is your ticket: \n");
-		
-	// Generate lottery ticket Numbers and Print lottery ticket 
-	while (count < 10){
-	    int rand_int1 = rand.nextInt(100);
-        int rand_int2 = rand.nextInt(100);
-        int rand_int3 = rand.nextInt(100);
-        int rand_int4 = rand.nextInt(100);
-        int rand_int5 = rand.nextInt(100);
-        int rand_int6 = rand.nextInt(100);
-        if (rand_int1 < 10){
-            System.out.print("0" + rand_int1 + " ");
-
-        }
-        else{
-            System.out.print(rand_int1 + " ");
-
-        }
-        if (rand_int2 < 10){
-            System.out.print("0" + rand_int2 + " ");
-
-        }
-        else{
-            System.out.print(rand_int2 + " ");
-
-        }
-        if (rand_int3 < 10){
-            System.out.print("0" + rand_int3 + " ");
-
-        }
-        else{
-            System.out.print(rand_int3 + " ");
-
-        }
-        if (rand_int4 < 10){
-            System.out.print("0" + rand_int4 + " ");
-
-        }
-        else{
-            System.out.print(rand_int4 + " ");
-
-        }
-        if (rand_int5 < 10){
-            System.out.print("0" + rand_int5 + " ");
-
-        }
-        else{
-            System.out.print(rand_int5 + " ");
-
-        }
-        if (rand_int6 < 10){
-            System.out.print("0" + rand_int6 + "\n");
-
-        }
-        else{
-            System.out.print(rand_int6 + "\n");
-
-        }
-
-        count = count + 1;
-	}
-	// Print lottery ticket 
-	System.out.print("---------------------- \n");
 	
-	// Print good luck message
-	System.out.print("Good luck " + name + "! \n");
-	System.out.print("Estimated Jackpot: \n ");
 	
-	// Print estimated Jackpot
-    System.out.print("$225,938,745 \n");
-	System.out.print("---------------------- \n");
+	    // Prompt for the amount to play
+        System.out.print("How much do you want to play? ");
+        double amount = scan.nextDouble();
+        System.out.println("Great! " + name + " wants to play $" + df.format(amount) + ".\n");
 
-       
-	}
+        // Display lottery tickets
+        System.out.println("Here are the tickets:");
+        System.out.println("-----------------");
+
+        // Lotto Winning Numbers
+        int[] winningNumbers = {3, 5, 16, 58, 59, 11};
+
+        double prize = 0.0;
+        
+        // Generate and display 10 lottery tickets
+        for (int i = 0; i < 10; i++) {
+            int[] lotteryNumbers = new int[6];
+
+            // Generate 6 random numbers for each ticket
+            for (int j = 0; j < 6; j++) {
+                lotteryNumbers[j] = rand.nextInt(100);
+
+                // Display formated lottery numbers
+                if (lotteryNumbers[j] < 10) {
+                    System.out.print("0" + lotteryNumbers[j] + " ");
+                } else {
+                    System.out.print(lotteryNumbers[j] + " ");
+                }
+            }
+            System.out.println();
+
+            // Check for matching numbers with the winning numbers
+            for (int num : lotteryNumbers) {
+                for (int winNum : winningNumbers) {
+                    if (num == winNum) {
+                        // Increase the amount to the powere of 1.75 if there is a match
+                        amount = Math.pow(amount, 1.75);
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Display separator
+        System.out.println("-----------------");
+        
+        // Display goodluck message
+        System.out.println("Good luck " + name + "!");
+        System.out.println("-----------------");
+
+        // Calculate and print prize money
+        prize = Math.round(amount * 100.0) / 100.0;
+        System.out.println("Your Winnings are :\n$" + df.format(prize));
+        System.out.println("-----------------");
+
+    }
 }
